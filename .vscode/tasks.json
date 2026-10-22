@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Cline: review workspace",
+      "type": "shell",
+      "command": "pwd && ls -la && echo '\n---' && find . -maxdepth 2 -type f | sort | sed 's#^\./##' | head -200",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Cline: install dependencies",
+      "type": "shell",
+      "command": "if [ -f package.json ]; then npm install; else echo 'No package.json found in this workspace yet.'; fi",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Cline: run project",
+      "type": "shell",
+      "command": "if [ -f package.json ]; then npm run dev || npm start; else echo 'No runnable app configured yet.'; fi",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
