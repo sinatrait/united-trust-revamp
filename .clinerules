@@ -1,0 +1,30 @@
+# Cline workspace instructions
+
+## Project goals
+- Keep changes small, targeted, and easy to review.
+- Prefer the simplest implementation that satisfies the requirement.
+- Ask clarifying questions when the request is ambiguous or high-impact.
+
+## Workflow
+1. Inspect the repo structure before making changes.
+2. Read the exact files that are relevant to the task.
+3. Make the minimal patch needed to solve the root cause.
+4. Validate with the smallest relevant command or test.
+5. Summarize what changed and any follow-up risks.
+
+## Standards
+- Preserve existing conventions and naming patterns.
+- Avoid unrelated refactors.
+- Keep comments only when they explain intent or non-obvious behavior.
+- Prefer failing tests before implementing a fix when the feature/bug is covered by tests.
+- Do not add placeholder code or dead files.
+
+## Environment
+- Use terminal commands only when necessary.
+- Favor project-local scripts over ad hoc shell commands.
+- If dependencies are missing, install them explicitly and record the command in the summary.
+
+## Safety
+- Never expose secrets, API keys, or credentials in code or logs.
+- Do not modify user data or environment configuration unless the task requires it.
+- Keep edits scoped to the task and repository.

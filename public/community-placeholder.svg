@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img">
+  <rect width="900" height="760" fill="#e6eef2"/>
+  <circle cx="700" cy="165" r="190" fill="#f3b66f" opacity=".42"/>
+  <circle cx="160" cy="160" r="100" fill="#b8d0d8" opacity=".55"/>
+  <path d="M0 555c170-65 283-56 438 0s293 66 462-10v215H0z" fill="#c8dce0"/>
+  <path d="M70 485h760v180H70z" fill="#315b7c"/>
+  <path d="M70 485h760v20H70z" fill="#244b68"/>
+  <path d="M150 665h42v95h-42zm558 0h42v95h-42z" fill="#193753"/>
+  <circle cx="300" cy="305" r="56" fill="#bd805e"/>
+  <path d="M244 301c3-67 111-90 130-9-34-7-61-25-78-44-12 24-28 42-52 53z" fill="#193753"/>
+  <path d="M197 472c10-83 48-125 103-125s94 42 105 125l17 13H180z" fill="#477d96"/>
+  <circle cx="612" cy="305" r="56" fill="#9b684c"/>
+  <path d="M556 301c2-65 105-88 128-15-30-5-59-23-76-41-14 26-29 43-52 56z" fill="#193753"/>
+  <path d="M510 472c10-83 48-125 103-125s94 42 105 125l17 13H493z" fill="#d98a42"/>
+  <path d="m345 455 105 38 105-38v93l-105 38-105-38z" fill="#fff"/>
+  <path d="M450 493v93m-80-75 56 20m104-20-56 20" fill="none" stroke="#9eb6c2" stroke-linecap="round" stroke-width="7"/>
+  <path d="M450 493v93" fill="none" stroke="#d4e0e5" stroke-width="5"/>
+</svg>
