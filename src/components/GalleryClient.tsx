@@ -317,7 +317,7 @@ export default function GalleryClient() {
         className="border-t border-slate-200/80 bg-white px-5 py-10 sm:px-8 sm:py-14 lg:px-12"
       >
         <div className="mx-auto max-w-7xl">
-          <div className="mb-7 flex flex-col gap-5 sm:mb-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="sticky top-[76px] z-40 -mx-5 mb-7 flex flex-col gap-4 border-b border-slate-200/80 bg-white/95 px-5 py-3 backdrop-blur-md sm:-mx-8 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:px-8 lg:-mx-12 lg:px-12">
             <h2
               id="photo-video-gallery-title"
               className="text-3xl font-semibold tracking-[-0.05em] text-[#173a5e] sm:text-4xl"
