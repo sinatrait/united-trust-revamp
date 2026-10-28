@@ -51,7 +51,6 @@ export default function About() {
 
   return (
     <section
-      id="about"
       aria-labelledby="about-title"
       className="bg-white px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-28"
     >
@@ -60,12 +59,12 @@ export default function About() {
           <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
             Who we are
           </p>
-          <h2
+          <h1
             id="about-title"
             className="mt-4 text-4xl font-semibold tracking-[-0.055em] text-[#173a5e] sm:text-5xl"
           >
             About Us
-          </h2>
+          </h1>
           <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg sm:leading-9">
             The United Educational &amp; Social Welfare Trust is an ISO 9001:2015 certified
             organization dedicated to creating a positive impact on society through various

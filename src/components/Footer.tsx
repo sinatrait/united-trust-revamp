@@ -3,7 +3,7 @@ import { AtSign, Camera, CirclePlay, Mail } from "lucide-react";
 
 const quickLinks = [
   { label: "Home", href: "/#home" },
-  { label: "About Us", href: "/#about" },
+  { label: "About Us", href: "/about" },
   { label: "Our Services", href: "/services" },
   { label: "Activities", href: "/gallery" },
   { label: "What We Do", href: "/#services" },

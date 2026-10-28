@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/#home" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Activities", href: "/gallery" },
   { label: "Contact", href: "/contact" },
@@ -32,9 +32,6 @@ export default function Navbar() {
   }
 
   function isActiveLink(label: string, href: string) {
-    if (pathname === "/" && label === "About") {
-      return activeHash === "#about";
-    }
     if (pathname === "/" && label === "Home") {
       return activeHash === "" || activeHash === "#home";
     }
