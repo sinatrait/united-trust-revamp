@@ -7,5 +7,8 @@ FOR DELETE
 TO authenticated
 USING (
   bucket_id = 'UT-gallery'
-  AND auth.uid() = '866abca4-ee32-4f24-a719-025c97946e7b'::uuid
+  AND auth.uid() IN (
+    '866abca4-ee32-4f24-a719-025c97946e7b'::uuid,
+    'd8cedf00-da06-4221-b6be-16fbdc8789d8'::uuid
+  )
 );

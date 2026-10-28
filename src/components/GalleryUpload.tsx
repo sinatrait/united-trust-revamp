@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { LockKeyhole, LogOut, Upload, X } from "lucide-react";
 import { getSupabaseClient } from "@/lib/supabase";
-import { AUTHORIZED_GALLERY_USER_ID, GALLERY_BUCKET_NAME } from "@/lib/gallery";
+import { GALLERY_BUCKET_NAME, isAuthorizedGalleryUser } from "@/lib/gallery";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -28,7 +28,7 @@ export default function GalleryUpload({ onUploadComplete }: GalleryUploadProps) 
   const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const isAuthorized = userId === AUTHORIZED_GALLERY_USER_ID;
+  const isAuthorized = isAuthorizedGalleryUser(userId);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -97,14 +97,17 @@ export default function GalleryUpload({ onUploadComplete }: GalleryUploadProps) 
       if (!data.user || !data.session) {
         throw new Error("Sign-in completed without an active session.");
       }
-      if (data.user.id !== AUTHORIZED_GALLERY_USER_ID) {
+      if (!isAuthorizedGalleryUser(data.user.id)) {
+        const authorizationError =
+          `This account is not authorized to upload gallery activities. ` +
+          `Supabase returned UID ${data.user.id}; verify this UID and confirm the site is connected to the same Supabase project where the user was added.`;
         const { error: signOutError } = await supabase.auth.signOut();
         if (signOutError) {
           throw new Error(
-            `This account is not authorized to upload gallery activities. Sign-out failed: ${signOutError.message}`,
+            `${authorizationError} Sign-out failed: ${signOutError.message}`,
           );
         }
-        throw new Error("This account is not authorized to upload gallery activities.");
+        throw new Error(authorizationError);
       }
 
       setUserId(data.user.id);
@@ -171,7 +174,7 @@ export default function GalleryUpload({ onUploadComplete }: GalleryUploadProps) 
       if (sessionError) {
         throw new Error(`Could not verify your sign-in: ${sessionError.message}`);
       }
-      if (sessionData.session?.user.id !== AUTHORIZED_GALLERY_USER_ID) {
+      if (!isAuthorizedGalleryUser(sessionData.session?.user.id)) {
         setUserId(sessionData.session?.user.id ?? null);
         throw new Error("Sign in with the authorized gallery account before uploading.");
       }

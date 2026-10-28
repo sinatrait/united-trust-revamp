@@ -15,7 +15,7 @@ import {
 import Lightbox from "yet-another-react-lightbox";
 import Video from "yet-another-react-lightbox/plugins/video";
 import { getSupabaseClient } from "@/lib/supabase";
-import { AUTHORIZED_GALLERY_USER_ID, GALLERY_BUCKET_NAME } from "@/lib/gallery";
+import { GALLERY_BUCKET_NAME, isAuthorizedGalleryUser } from "@/lib/gallery";
 import GalleryUpload from "@/components/GalleryUpload";
 
 type GalleryItem = {
@@ -207,7 +207,7 @@ export default function GalleryClient() {
         const supabase = getSupabaseClient();
         const { data } = supabase.auth.onAuthStateChange((_event, session) => {
           if (isMounted) {
-            const isAuthorized = session?.user.id === AUTHORIZED_GALLERY_USER_ID;
+            const isAuthorized = isAuthorizedGalleryUser(session?.user.id);
             setAuthorizedUser(isAuthorized);
             if (!isAuthorized) {
               setSelectedNames([]);
@@ -221,7 +221,7 @@ export default function GalleryClient() {
         if (error) {
           throw new Error(`Could not verify gallery permissions: ${error.message}`);
         }
-        const isAuthorized = sessionData.session?.user.id === AUTHORIZED_GALLERY_USER_ID;
+        const isAuthorized = isAuthorizedGalleryUser(sessionData.session?.user.id);
         setAuthorizedUser(isAuthorized);
         if (!isAuthorized) {
           setSelectedNames([]);
@@ -264,7 +264,7 @@ export default function GalleryClient() {
       if (sessionError) {
         throw new Error(`Could not verify your sign-in: ${sessionError.message}`);
       }
-      if (sessionData.session?.user.id !== AUTHORIZED_GALLERY_USER_ID) {
+      if (!isAuthorizedGalleryUser(sessionData.session?.user.id)) {
         setAuthorizedUser(false);
         throw new Error("Sign in with the authorized gallery account to delete media.");
       }
