@@ -12,6 +12,9 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "The United Educational & Social Welfare Trust",
   description: "The United Educational & Social Welfare Trust",
+  icons: {
+    icon: "/United-trust-logo.svg",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

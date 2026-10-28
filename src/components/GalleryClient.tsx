@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   GraduationCap,
   HeartHandshake,
@@ -97,6 +98,7 @@ function getVideoContentType(item: GalleryItem): string {
 }
 
 export default function GalleryClient() {
+  const pathname = usePathname();
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [hoveredImageId, setHoveredImageId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -121,16 +123,26 @@ export default function GalleryClient() {
 
     try {
       const supabase = getSupabaseClient();
-      const { data, error } = await supabase.storage.from(GALLERY_BUCKET_NAME).list("", {
-        limit: 100,
-        sortBy: { column: "created_at", order: "desc" },
-      });
+      const pageSize = 100;
+      const files = [];
+      for (let offset = 0; ; offset += pageSize) {
+        const { data, error } = await supabase.storage.from(GALLERY_BUCKET_NAME).list("", {
+          limit: pageSize,
+          offset,
+          sortBy: { column: "created_at", order: "desc" },
+        });
 
-      if (error) {
-        throw new Error(`Could not load gallery: ${error.message}`);
+        if (error) {
+          throw new Error(`Could not load gallery: ${error.message}`);
+        }
+
+        files.push(...(data ?? []));
+        if (!data || data.length < pageSize) {
+          break;
+        }
       }
 
-      const galleryItems = (data ?? [])
+      const galleryItems = files
         .filter((file) => {
           const contentType = file.metadata?.mimetype ?? "";
           return (
@@ -162,19 +174,26 @@ export default function GalleryClient() {
   }, []);
 
   useEffect(() => {
-    let isMounted = true;
+    if (pathname !== "/gallery") return;
 
     void (async () => {
       await Promise.resolve();
-      if (isMounted) {
-        await loadGallery();
-      }
+      await loadGallery();
     })();
 
-    return () => {
-      isMounted = false;
+    const refreshGallery = () => {
+      if (document.visibilityState === "visible") {
+        void loadGallery();
+      }
     };
-  }, [loadGallery]);
+
+    window.addEventListener("pageshow", refreshGallery);
+    document.addEventListener("visibilitychange", refreshGallery);
+    return () => {
+      window.removeEventListener("pageshow", refreshGallery);
+      document.removeEventListener("visibilitychange", refreshGallery);
+    };
+  }, [loadGallery, pathname]);
 
   useEffect(() => {
     let isMounted = true;
@@ -250,15 +269,21 @@ export default function GalleryClient() {
         throw new Error("Sign in with the authorized gallery account to delete media.");
       }
 
-      const { error } = await supabase.storage
+      const { data: removedFiles, error } = await supabase.storage
         .from(GALLERY_BUCKET_NAME)
         .remove(namesToDelete);
       if (error) {
         throw new Error(`Could not delete selected media: ${error.message}`);
       }
 
+      const removedNames = new Set((removedFiles ?? []).map((file) => file.name));
+      setItems((current) => current.filter((item) => !removedNames.has(item.name)));
       setSelectedNames([]);
       setOpenIndex(-1);
+      if (removedNames.size !== namesToDelete.length) {
+        await loadGallery();
+        throw new Error("Some selected media could not be confirmed as deleted. Please refresh and try again.");
+      }
       await loadGallery();
     } catch (error) {
       setDeleteError(getErrorMessage(error));
@@ -317,7 +342,11 @@ export default function GalleryClient() {
         className="border-t border-slate-200/80 bg-white px-5 py-10 sm:px-8 sm:py-14 lg:px-12"
       >
         <div className="mx-auto max-w-7xl">
-          <div className="sticky top-[76px] z-40 -mx-5 mb-7 flex flex-col gap-4 border-b border-slate-200/80 bg-white/95 px-5 py-3 backdrop-blur-md sm:-mx-8 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:px-8 lg:-mx-12 lg:px-12">
+          <div
+            className={`-mx-5 mb-7 flex flex-col gap-4 border-b border-slate-200/80 bg-white/95 px-5 py-3 sm:-mx-8 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:px-8 lg:-mx-12 lg:px-12 ${
+              authorizedUser ? "" : "sticky top-[76px] z-40 backdrop-blur-md"
+            }`}
+          >
             <h2
               id="photo-video-gallery-title"
               className="text-3xl font-semibold tracking-[-0.05em] text-[#173a5e] sm:text-4xl"
@@ -389,7 +418,7 @@ export default function GalleryClient() {
             </p>
           </div>
           {authorizedUser && (
-            <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-[#f5f8fb] p-4">
+            <div className="sticky top-[76px] z-30 mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-[#f5f8fb]/95 p-4 backdrop-blur-md">
               <div className="flex flex-wrap items-center gap-4">
                 <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-[#173a5e]">
                   <input
