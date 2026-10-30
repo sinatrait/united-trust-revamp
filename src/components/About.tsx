@@ -93,9 +93,9 @@ export default function About() {
               >
                 <Icon size={23} strokeWidth={1.8} />
               </span>
-              <h3 className="mt-6 text-2xl font-semibold tracking-[-0.04em] text-[#173a5e]">
+              <h2 className="mt-6 text-2xl font-semibold tracking-[-0.04em] text-[#173a5e]">
                 {title}
-              </h3>
+              </h2>
               <p className="mt-3 max-w-xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                 {description}
               </p>

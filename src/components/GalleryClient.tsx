@@ -327,9 +327,9 @@ export default function GalleryClient() {
                 >
                   <Icon size={23} strokeWidth={1.8} />
                 </span>
-                <h3 className="mt-5 text-lg font-semibold tracking-[-0.03em] text-[#173a5e]">
+                <h2 className="mt-5 text-lg font-semibold tracking-[-0.03em] text-[#173a5e]">
                   {title}
-                </h3>
+                </h2>
                 <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
               </article>
             ))}
@@ -511,7 +511,7 @@ export default function GalleryClient() {
                     ) : (
                       <Image
                         src={item.url}
-                        alt=""
+                        alt="Photo from The United Trust activities gallery"
                         width={800}
                         height={600}
                         unoptimized
@@ -547,7 +547,7 @@ export default function GalleryClient() {
               }
             : {
                 src: item.url,
-                alt: item.name.split("/").at(-1),
+                alt: "Photo from The United Trust activities gallery",
               },
         )}
         plugins={[Video]}

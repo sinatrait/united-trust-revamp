@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Geist } from "next/font/google";
 import "yet-another-react-lightbox/styles.css";
@@ -9,18 +9,66 @@ const geist = Geist({
   variable: "--font-geist",
 });
 
+const organizationDescription =
+  "The United Trust is an ISO 9001:2015 certified NGO dedicated to education, healthcare, and social welfare. Empowering minds and transforming communities for over 31 years.";
+
 export const metadata: Metadata = {
-  title: "The United Educational & Social Welfare Trust",
-  description: "The United Educational & Social Welfare Trust",
+  metadataBase: new URL("https://theunitedtrust.in"),
+  title: {
+    template: "%s | The United Trust",
+    default: "The United Educational & Social Welfare Trust | Empowering Communities",
+  },
+  description: organizationDescription,
+  keywords:
+    "NGO, charity, education trust, social welfare, United Trust, donate, community health, India",
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "The United Trust",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The United Educational & Social Welfare Trust",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.jpg"],
+  },
   icons: {
     icon: "/United-trust-logo.svg",
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: "The United Educational & Social Welfare Trust",
+  url: "https://theunitedtrust.in",
+  logo: "https://theunitedtrust.in/United-trust-logo.svg",
+  description: organizationDescription,
+};
+
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} antialiased`}>{children}</body>
+      <body className={`${geist.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

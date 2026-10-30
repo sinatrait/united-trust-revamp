@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "About Us | The United Trust",
+  title: "About Us",
   description:
     "Learn about The United Educational & Social Welfare Trust, its mission, and its vision for a more compassionate and inclusive society.",
 };
