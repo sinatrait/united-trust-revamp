@@ -13,7 +13,7 @@ const organizationDescription =
   "The United Trust is an ISO 9001:2015 certified NGO dedicated to education, healthcare, and social welfare. Empowering minds and transforming communities for over 31 years.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://theunitedtrust.in"),
+  metadataBase: new URL("https://www.theunitedtrust.in"),
   title: {
     template: "%s | The United Trust",
     default: "The United Educational & Social Welfare Trust | Empowering Communities",
@@ -52,8 +52,8 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: "The United Educational & Social Welfare Trust",
-  url: "https://theunitedtrust.in",
-  logo: "https://theunitedtrust.in/United-trust-logo.svg",
+  url: "https://www.theunitedtrust.in",
+  logo: "https://www.theunitedtrust.in/United-trust-logo.svg",
   description: organizationDescription,
 };
 
