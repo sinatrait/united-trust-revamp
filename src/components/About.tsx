@@ -56,7 +56,7 @@ export default function About() {
     >
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
+          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#a65e28]">
             Who we are
           </p>
           <h1

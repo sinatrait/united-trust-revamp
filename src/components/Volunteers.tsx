@@ -35,7 +35,7 @@ export default function Volunteers() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-6 border-b border-[#d9e2e9] pb-10 md:grid-cols-[0.8fr_1.2fr] md:items-end md:gap-12">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
+            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#a65e28]">
               The people behind our work
             </p>
             <h2

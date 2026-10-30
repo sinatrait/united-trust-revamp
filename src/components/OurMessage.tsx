@@ -2,11 +2,11 @@ export default function OurMessage() {
   return (
     <section
       aria-labelledby="our-message-title"
-      className="bg-[#009f4d] px-5 py-16 text-white sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="bg-[#087a3e] px-5 py-16 text-white sm:px-8 sm:py-20 lg:px-12 lg:py-24"
     >
       <div className="mx-auto max-w-7xl">
         <div className="max-w-5xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-white/75">
+          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-white">
             A note from our trust
           </p>
           <h2

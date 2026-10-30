@@ -84,7 +84,7 @@ export default function WhatWeDo() {
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 max-w-3xl sm:mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
+          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#a65e28]">
             How we serve
           </p>
           <h2
@@ -120,7 +120,7 @@ export default function WhatWeDo() {
                 />
               </div>
               <div className="p-6 sm:p-7">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-[#b87537]">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-[#a65e28]">
                   {initiative.category}
                 </p>
                 <h3 className="mt-3 text-xl font-semibold leading-snug tracking-[-0.035em] text-[#173a5e]">

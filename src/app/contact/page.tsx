@@ -17,7 +17,7 @@ export default function ContactPage() {
       <main>
         <section className="bg-[#f5f8fb] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
+            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#a65e28]">
               We would love to hear from you
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.055em] text-[#173a5e] sm:text-5xl">
@@ -36,7 +36,7 @@ export default function ContactPage() {
         >
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.8fr] lg:gap-16">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
+              <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#a65e28]">
                 Get in touch
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-[#173a5e]">

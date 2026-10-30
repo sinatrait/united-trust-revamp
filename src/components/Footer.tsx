@@ -70,6 +70,7 @@ export default function Footer() {
               ) : (
                 <span
                   key={label}
+                  role="img"
                   aria-label={label}
                   title={label}
                   className="grid size-10 place-items-center rounded-full border border-white/10 text-slate-500"

@@ -261,7 +261,7 @@ export default function GalleryUpload({ onUploadComplete }: GalleryUploadProps) 
       >
         <div className="flex items-start justify-between gap-4 border-b border-slate-100 px-6 py-5 sm:px-7">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#b87537]">
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a65e28]">
               Activities gallery
             </p>
             <h2 id="gallery-upload-title" className="mt-2 text-xl font-semibold">

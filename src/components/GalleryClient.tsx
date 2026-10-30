@@ -297,7 +297,7 @@ export default function GalleryClient() {
       <section className="bg-[#f5f8fb] px-5 pt-14 pb-6 sm:px-8 sm:pt-16 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
+            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#a65e28]">
               The United Educational &amp; Social Welfare Trust
             </p>
             <h1 className="mt-4 text-4xl font-semibold tracking-[-0.055em] text-[#173a5e] sm:text-5xl">

@@ -48,7 +48,7 @@ export default function ServicesPage() {
       <main>
         <section className="bg-[#f5f8fb] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#b87537]">
+            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-[#a65e28]">
               Personalized support for your journey
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.055em] text-[#173a5e] sm:text-5xl">
