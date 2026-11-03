@@ -81,10 +81,10 @@ export default function Volunteers() {
               </h4>
               <div className="relative mt-6 flex flex-col gap-3 border-t border-white/15 pt-5 text-sm text-slate-200 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
                 <a
-                  href="tel:8008712786"
+                  href="tel:+919704640555"
                   className="transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#efbd88]"
                 >
-                  8008712786
+                  +91 97046 40555
                 </a>
                 <a
                   href="mailto:unitedtrustind@gmail.com"
