@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "yet-another-react-lightbox/styles.css";
 import "./globals.css";
 
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
